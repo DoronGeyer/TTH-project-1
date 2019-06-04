@@ -152,13 +152,6 @@ if(random1.interest){
     document.getElementById('quote-box').innerHTML= listHTML;
     backgroundColorR();
 }
-//Interval timer added that calls the printQuote function every 20 seconds.
-
-
-// optinal prompt for setting timer added and commented out.
-//timerValue= (parseInt(prompt("What would you like the change interval to be in seconds?")))*1000;
-
-
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
