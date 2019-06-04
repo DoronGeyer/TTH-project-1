@@ -1,4 +1,4 @@
-/** 
+/**
  * Treehouse FSJS Techdegree
  * Random Quote Generator - CSS
  */
@@ -92,7 +92,7 @@ body {
 #loadQuote:focus {
   outline: none;
 }
-
+}
 @media (min-width: 420px) {
   .quote {
     font-size: 4rem;
