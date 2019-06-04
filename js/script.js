@@ -92,12 +92,24 @@ let quotes = [
 
 
   ];
+let timeAmount=20000;
+// the "setTimer" function runs the "printQuote" function at an interval set by timeAmount, it stores the returned value in "timer"
+var timer;
+function setTimer(){
+timer =  window.setInterval(printQuote,timeAmount);
+}
 
+//The "stopTimer" function clears the interval value saved in the "timer" variable, then it resets the timer back to the value held in "TimeAmount"
+function stopTimer(){
+  window.clearInterval(timer);
+timer =  setInterval(printQuote,timeAmount);
+}
 /***
   Created a Function to generate a random number using the length of the quotes array as a guide.
   The number generated is stored in the RandomNumber Variable and used as a location in the quotes array.
   there was no +1 at the end of the Math.random as arrays start at 0. Adding 1 would ignore the first array value stored at array[0]
 ***/
+
 function getRandomQuote(){
   let RandomNumber= Math.floor(Math.random()*quotes.length);
   return quotes[RandomNumber];
@@ -124,7 +136,6 @@ function backgroundColorR(){
 ***/
 function printQuote (){
   let random1 =  getRandomQuote();
-
   let listHTML= ' ';
       listHTML+= `<p class="quote"> ${random1.quote} </p>
 <p class="source"> ${random1.source}`
@@ -143,10 +154,9 @@ if(random1.interest){
 }
 //Interval timer added that calls the printQuote function every 20 seconds.
 
-var timerValue=20000;
+
 // optinal prompt for setting timer added and commented out.
 //timerValue= (parseInt(prompt("What would you like the change interval to be in seconds?")))*1000;
-setInterval(printQuote,timerValue);
 
 
 /***
@@ -155,4 +165,12 @@ setInterval(printQuote,timerValue);
   function.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+/***calling setTimer to start the counter for running printQuote, below the second click event will call the stopTimer function
+this will clear the timer and reset it each time you click the button to show a new quote. This is to avoid showing a new quote
+and have the timer change it 2 seconds later rather than waiting the full 20 seconds.
+
+setTimer is called initially so that it activates on page load rather than waiting for the first click event on "show another quote" button.
+***/
+setTimer();
+document.getElementById('loadQuote').addEventListener("click", printQuote,false);
+document.getElementById('loadQuote').addEventListener("click", stopTimer,false);
