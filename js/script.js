@@ -106,25 +106,29 @@ timer =  setInterval(printQuote,timeAmount);
 }
 /***
   Created a Function to generate a random number using the length of the quotes array as a guide.
-  The number generated is stored in the RandomNumber Variable and used as a location in the quotes array.
+  The number generated is stored in the randomNumber Variable and used as a location in the quotes array.
   there was no +1 at the end of the Math.random as arrays start at 0. Adding 1 would ignore the first array value stored at array[0]
 ***/
 
 function getRandomQuote(){
-  let RandomNumber= Math.floor(Math.random()*quotes.length);
-  return quotes[RandomNumber];
+  let randomNumber= Math.floor(Math.random()*quotes.length);
+  return quotes[randomNumber];
 };
 //console.log(getRandomQuote());    - tested that function is working as it is meant to function accesses each quote properly.
 
 /***function created to generate a random color, First attempt used RGB color for this, however colors provided were often neon and diffuclt to read.
 instead I replaced the (R)ed(G)reen(B)lue  with a (H)ue(S)aturation(L)ight color scheme. This allowed better control over color so that I could
-match the color provided by default.The hsl provided warmer softer more pastel colors consistently.***/
+match the color provided by default.The hsl provided warmer softer more pastel colors consistently.
+
+color of the button background changed to be similar to page color, with slightly more saturation and slightly less light making it a stronger color.
+***/
 function backgroundColorR(){
   let color1 =Math.floor(Math.random() * 360);
   let color2 =50;
   let color3 =60;
   colorRGB = `hsl(${color1},${color2}%,${color3}%)`;
   document.body.style.background = colorRGB;
+  document.getElementById("loadQuote").style.backgroundColor = `hsl(${color1},${color2+7}%,${color3-7}%)`;
 }
 
 /***
